@@ -3,3 +3,4 @@ Thumbs.db
 *.log
 backup-schesman-*.json
 agendamentos.csv
+manual/

@@ -18,6 +18,8 @@ A pasta `docs/` contém apenas a versão pública do site. O painel administrati
 
 > A versão online é estática: o agendamento é salvo no navegador do visitante e não chega ao escritório. Para receber agendamentos de verdade, é necessário um back-end.
 
+A pasta `manual/` é **local** e está incluída no `.gitignore`. Ela guarda a documentação interna do projeto e não é publicada no repositório.
+
 ---
 
 ## 1. Como abrir o site
@@ -201,16 +203,27 @@ O site está publicado no **GitHub Pages**:
 
 Para atualizar o site publicado:
 
-1. edite os arquivos da pasta `docs/` (ou copie a versão atualizada de `index.html`, `css/` e `js/`);
-2. execute:
+1. edite os arquivos da raiz (`index.html`, `css/style.css` e `js/`);
+2. sincronize a pasta `docs/` com o script:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\publicar.ps1
+```
+
+O script copia os arquivos públicos, remove o link de administrador e garante o `.nojekyll`. Ele não publica o `admin.html` e remove cópias dele em `docs/`, se existirem.
+
+3. confira o resultado e envie:
 
 ```bash
-git add .
+git status
+git add docs
 git commit -m "Atualiza o site"
 git push
 ```
 
 O GitHub Pages reconstrói a página automaticamente em alguns minutos.
+
+Também é possível copiar os arquivos manualmente para `docs/`, desde que o link de administrador seja removido de `docs/index.html`.
 
 Pontos de atenção:
 
