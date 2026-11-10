@@ -1,0 +1,815 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Painel do escritório — Schesman Advocacia</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2314263b'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='38' fill='%23b8935a' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/admin.css" />
+  </head>
+  <body>
+    <!-- Tela de acesso -->
+    <div class="login" id="loginView">
+      <div class="login__brand">
+        <div class="login__brand-inner">
+          <span class="login__monogram" id="loginMonogram">S</span>
+          <h1 id="loginBrandName">Schesman Advocacia</h1>
+          <p id="loginBrandTagline">Advocacia &amp; Consultoria Jurídica</p>
+          <blockquote>“Cada caso é único. Por isso, cada estratégia também deve ser.”</blockquote>
+          <span class="login__oab" id="loginOab">OAB/SP 000.000</span>
+        </div>
+      </div>
+      <div class="login__panel">
+        <form class="login__form" id="loginForm" novalidate>
+          <span class="eyebrow">Área restrita</span>
+          <h2>Painel do escritório</h2>
+          <p class="login__lead">
+            Acesse para editar o conteúdo do site e gerenciar os agendamentos.
+          </p>
+
+          <div class="field">
+            <label for="loginPassword">Senha de acesso</label>
+            <div class="password-wrap">
+              <input
+                type="password"
+                id="loginPassword"
+                autocomplete="current-password"
+                placeholder="Digite sua senha"
+              />
+              <button
+                type="button"
+                class="icon-btn"
+                id="toggleLoginPassword"
+                aria-label="Mostrar senha"
+              >
+                <span data-icon="eye"></span>
+              </button>
+            </div>
+            <p class="field-error" id="loginError" hidden>Senha incorreta. Tente novamente.</p>
+          </div>
+
+          <button class="btn btn--primary btn--block" type="submit">Entrar no painel</button>
+          <p class="login__hint" id="loginHint">
+            Senha padrão: <code>admin123</code> — altere em Configurações.
+          </p>
+          <a href="index.html" class="login__back">← Voltar para o site</a>
+        </form>
+      </div>
+    </div>
+
+    <!-- Painel -->
+    <div class="admin" id="adminView" hidden>
+      <div class="sidebar-overlay" id="sidebarOverlay" hidden></div>
+
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar__brand">
+          <span class="sidebar__mark" id="sidebarMonogram">S</span>
+          <div>
+            <strong id="sidebarBrandName">Schesman</strong>
+            <small>Painel do site</small>
+          </div>
+          <button class="sidebar__close" id="sidebarClose" aria-label="Fechar menu" type="button">
+            <span data-icon="x"></span>
+          </button>
+        </div>
+
+        <nav class="sidebar__nav" aria-label="Menu do painel">
+          <button class="nav-item is-active" data-tab="visao" type="button">
+            <span data-icon="layout"></span> Visão geral
+          </button>
+          <button class="nav-item" data-tab="agendamentos" type="button">
+            <span data-icon="calendar"></span> Agendamentos
+            <span class="badge-count" id="pendingCount">0</span>
+          </button>
+
+          <span class="sidebar__label">Conteúdo do site</span>
+          <button class="nav-item" data-tab="identidade" type="button">
+            <span data-icon="droplet"></span> Identidade
+          </button>
+          <button class="nav-item" data-tab="contato" type="button">
+            <span data-icon="phone"></span> Contato &amp; redes
+          </button>
+          <button class="nav-item" data-tab="inicio" type="button">
+            <span data-icon="home"></span> Página inicial
+          </button>
+          <button class="nav-item" data-tab="areas" type="button">
+            <span data-icon="scale"></span> Áreas de atuação
+          </button>
+          <button class="nav-item" data-tab="faq" type="button">
+            <span data-icon="info"></span> Perguntas frequentes
+          </button>
+          <button class="nav-item" data-tab="horarios" type="button">
+            <span data-icon="clock"></span> Horários
+          </button>
+
+          <span class="sidebar__label">Sistema</span>
+          <button class="nav-item" data-tab="config" type="button">
+            <span data-icon="settings"></span> Configurações
+          </button>
+        </nav>
+
+        <div class="sidebar__footer">
+          <a href="index.html" target="_blank" rel="noopener">
+            <span data-icon="external-link"></span> Ver site
+          </a>
+          <button id="logoutBtn" type="button">
+            <span data-icon="logout"></span> Sair
+          </button>
+        </div>
+      </aside>
+
+      <div class="admin__main">
+        <header class="admin-topbar">
+          <div class="admin-topbar__title">
+            <button class="menu-btn" id="adminMenuBtn" type="button" aria-label="Abrir menu">
+              <span data-icon="menu"></span>
+            </button>
+            <div>
+              <h1 id="pageTitle">Visão geral</h1>
+              <p id="pageSubtitle">Resumo dos agendamentos e atalhos do painel.</p>
+            </div>
+          </div>
+          <div class="admin-topbar__actions">
+            <span class="dirty-dot" id="dirtyDot" hidden>Alterações não salvas</span>
+            <button class="btn btn--ghost" id="discardBtn" type="button" disabled>Descartar</button>
+            <button class="btn btn--primary" id="saveBtn" type="button" disabled>
+              Salvar alterações
+            </button>
+          </div>
+        </header>
+
+        <main class="admin-content">
+          <!-- Visão geral -->
+          <section class="tab-panel" id="tab-visao" data-panel="visao">
+            <div class="stat-grid">
+              <article class="stat-card">
+                <span class="stat-card__icon" data-icon="clock"></span>
+                <div><strong id="statPending">0</strong><span>aguardando confirmação</span></div>
+              </article>
+              <article class="stat-card">
+                <span class="stat-card__icon" data-icon="check-circle"></span>
+                <div><strong id="statConfirmed">0</strong><span>agendamentos confirmados</span></div>
+              </article>
+              <article class="stat-card">
+                <span class="stat-card__icon" data-icon="calendar"></span>
+                <div><strong id="statMonth">0</strong><span>agendamentos neste mês</span></div>
+              </article>
+              <article class="stat-card">
+                <span class="stat-card__icon" data-icon="list"></span>
+                <div><strong id="statTotal">0</strong><span>agendamentos no total</span></div>
+              </article>
+            </div>
+
+            <div class="dashboard-grid">
+              <section class="card">
+                <div class="card__head">
+                  <div>
+                    <h2>Próximos agendamentos</h2>
+                    <p>Os atendimentos mais próximos da data de hoje.</p>
+                  </div>
+                  <button class="btn btn--ghost btn--sm" data-goto="agendamentos" type="button">
+                    Ver todos
+                  </button>
+                </div>
+                <div class="next-list" id="nextAppointments"></div>
+              </section>
+
+              <section class="card">
+                <h2>Atalhos</h2>
+                <div class="quick-actions">
+                  <button type="button" data-goto="identidade">
+                    <span class="quick-actions__icon" data-icon="droplet"></span>
+                    <span><strong>Identidade visual</strong><small>Cores, logo e marca</small></span>
+                  </button>
+                  <button type="button" data-goto="inicio">
+                    <span class="quick-actions__icon" data-icon="home"></span>
+                    <span><strong>Página inicial</strong><small>Textos e destaques</small></span>
+                  </button>
+                  <button type="button" data-goto="horarios">
+                    <span class="quick-actions__icon" data-icon="clock"></span>
+                    <span><strong>Horários</strong><small>Dias e faixas de atendimento</small></span>
+                  </button>
+                  <button type="button" data-goto="config">
+                    <span class="quick-actions__icon" data-icon="settings"></span>
+                    <span><strong>Configurações</strong><small>Senha e backup</small></span>
+                  </button>
+                </div>
+                <div class="info-box">
+                  <span data-icon="info"></span>
+                  <p>
+                    As alterações são salvas neste navegador. Para publicar, exporte um backup ou
+                    mantenha o site hospedado com um banco de dados.
+                  </p>
+                </div>
+              </section>
+            </div>
+          </section>
+
+          <!-- Agendamentos -->
+          <section class="tab-panel" id="tab-agendamentos" data-panel="agendamentos" hidden>
+            <div class="card">
+              <div class="toolbar">
+                <div class="search-field">
+                  <span data-icon="search"></span>
+                  <input
+                    type="search"
+                    id="apptSearch"
+                    placeholder="Buscar por nome, e-mail ou protocolo"
+                    aria-label="Buscar agendamentos"
+                  />
+                </div>
+                <select id="apptStatusFilter" aria-label="Filtrar por status">
+                  <option value="">Todos os status</option>
+                  <option value="pendente">Pendentes</option>
+                  <option value="confirmado">Confirmados</option>
+                  <option value="cancelado">Cancelados</option>
+                </select>
+                <input type="date" id="apptDateFilter" aria-label="Filtrar por data" />
+                <button class="btn btn--ghost btn--sm" id="clearFilters" type="button">
+                  Limpar
+                </button>
+                <button class="btn btn--ghost btn--sm" id="exportCsv" type="button">
+                  <span data-icon="download"></span> Exportar CSV
+                </button>
+              </div>
+
+              <div class="table-wrap">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Cliente</th>
+                      <th>Contato</th>
+                      <th>Área</th>
+                      <th>Data / hora</th>
+                      <th>Formato</th>
+                      <th>Status</th>
+                      <th class="th-actions">Ações</th>
+                    </tr>
+                  </thead>
+                  <tbody id="appointmentsBody"></tbody>
+                </table>
+                <div class="empty-state" id="appointmentsEmpty" hidden>
+                  <span data-icon="calendar"></span>
+                  <h3>Nenhum agendamento encontrado</h3>
+                  <p>Quando um cliente solicitar um horário pelo site, ele aparecerá aqui.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Identidade -->
+          <section class="tab-panel" id="tab-identidade" data-panel="identidade" hidden>
+            <div class="panel-grid">
+              <section class="card">
+                <div class="card__head">
+                  <div>
+                    <h2>Marca</h2>
+                    <p>Nome e assinatura exibidos no site.</p>
+                  </div>
+                </div>
+                <div class="form-grid">
+                  <div class="field field--full">
+                    <label for="brandName">Nome do escritório</label>
+                    <input type="text" id="brandName" data-bind="brand.name" />
+                  </div>
+                  <div class="field">
+                    <label for="brandShortName">Nome curto</label>
+                    <input type="text" id="brandShortName" data-bind="brand.shortName" />
+                  </div>
+                  <div class="field">
+                    <label for="brandMonogram">Monograma</label>
+                    <input
+                      type="text"
+                      id="brandMonogram"
+                      data-bind="brand.monogram"
+                      maxlength="2"
+                    />
+                    <span class="hint">Usado quando não há logo. Ex.: a inicial do escritório.</span>
+                  </div>
+                  <div class="field field--full">
+                    <label for="brandTagline">Assinatura / especialidade</label>
+                    <input type="text" id="brandTagline" data-bind="brand.tagline" />
+                  </div>
+                  <div class="field field--full">
+                    <label for="brandOab">Registro na OAB</label>
+                    <input type="text" id="brandOab" data-bind="brand.oab" />
+                  </div>
+                </div>
+              </section>
+
+              <section class="card">
+                <h2>Logo</h2>
+                <p class="card__lead">
+                  Envie a logo do escritório. Sem foto de pessoas — apenas a marca.
+                </p>
+                <div class="logo-uploader">
+                  <div class="logo-preview" id="logoPreview">S</div>
+                  <div class="logo-actions">
+                    <label class="btn btn--outline btn--sm" for="logoInput">
+                      Escolher imagem
+                    </label>
+                    <input
+                      type="file"
+                      id="logoInput"
+                      accept="image/png,image/jpeg,image/webp,image/svg+xml"
+                      hidden
+                    />
+                    <button class="btn btn--ghost btn--sm" id="removeLogoBtn" type="button">
+                      Remover
+                    </button>
+                    <p class="hint">PNG, JPG, WEBP ou SVG, até 400 KB.</p>
+                  </div>
+                </div>
+              </section>
+            </div>
+
+            <section class="card">
+              <div class="card__head">
+                <div>
+                  <h2>Cores do site</h2>
+                  <p>As cores são aplicadas em todo o site institucional.</p>
+                </div>
+              </div>
+              <div class="color-grid">
+                <div class="color-field">
+                  <label for="colorPrimary">Cor principal</label>
+                  <div class="color-input">
+                    <input type="color" id="colorPrimary" data-bind="theme.primary" />
+                    <input
+                      type="text"
+                      data-bind="theme.primary"
+                      maxlength="7"
+                      spellcheck="false"
+                      aria-label="Código da cor principal"
+                    />
+                  </div>
+                </div>
+                <div class="color-field">
+                  <label for="colorAccent">Cor de destaque</label>
+                  <div class="color-input">
+                    <input type="color" id="colorAccent" data-bind="theme.accent" />
+                    <input
+                      type="text"
+                      data-bind="theme.accent"
+                      maxlength="7"
+                      spellcheck="false"
+                      aria-label="Código da cor de destaque"
+                    />
+                  </div>
+                </div>
+                <div class="color-field">
+                  <label for="colorBackground">Fundo do site</label>
+                  <div class="color-input">
+                    <input type="color" id="colorBackground" data-bind="theme.background" />
+                    <input
+                      type="text"
+                      data-bind="theme.background"
+                      maxlength="7"
+                      spellcheck="false"
+                      aria-label="Código da cor de fundo"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div class="theme-preview" id="themePreview">
+                <span class="theme-preview__label">Prévia das cores</span>
+                <div class="theme-preview__panel">
+                  <span class="theme-preview__eyebrow">Advocacia &amp; Consultoria</span>
+                  <strong id="themePreviewName">Schesman Advocacia</strong>
+                  <span class="theme-preview__tagline" id="themePreviewTagline">
+                    Advocacia &amp; Consultoria Jurídica
+                  </span>
+                  <div class="theme-preview__actions">
+                    <span class="theme-preview__btn">Agendar consulta</span>
+                    <span class="theme-preview__link">Conheça o escritório</span>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </section>
+
+          <!-- Contato -->
+          <section class="tab-panel" id="tab-contato" data-panel="contato" hidden>
+            <section class="card">
+              <div class="card__head">
+                <div>
+                  <h2>Contato e redes sociais</h2>
+                  <p>Esses dados aparecem no topo, no contato e no rodapé do site.</p>
+                </div>
+              </div>
+              <div class="form-grid">
+                <div class="field">
+                  <label for="contactPhone">Telefone</label>
+                  <input type="text" id="contactPhone" data-bind="contact.phone" />
+                </div>
+                <div class="field">
+                  <label for="contactWhatsapp">WhatsApp (com DDI e DDD)</label>
+                  <input
+                    type="text"
+                    id="contactWhatsapp"
+                    data-bind="contact.whatsapp"
+                    placeholder="5511999999999"
+                  />
+                  <span class="hint">Somente números. Ex.: 5511999999999.</span>
+                </div>
+                <div class="field">
+                  <label for="contactEmail">E-mail</label>
+                  <input type="email" id="contactEmail" data-bind="contact.email" />
+                </div>
+                <div class="field">
+                  <label for="contactHours">Horário de atendimento</label>
+                  <input type="text" id="contactHours" data-bind="contact.hours" />
+                </div>
+                <div class="field field--full">
+                  <label for="contactAddress">Endereço</label>
+                  <input type="text" id="contactAddress" data-bind="contact.address" />
+                </div>
+                <div class="field field--full">
+                  <label for="contactInstagram">Link do Instagram</label>
+                  <input
+                    type="url"
+                    id="contactInstagram"
+                    data-bind="contact.instagram"
+                    placeholder="https://www.instagram.com/seu-escritorio"
+                  />
+                  <span class="hint">
+                    Cole o link completo do perfil. Se ficar vazio, os botões do Instagram são
+                    ocultados.
+                  </span>
+                </div>
+              </div>
+            </section>
+          </section>
+
+          <!-- Página inicial -->
+          <section class="tab-panel" id="tab-inicio" data-panel="inicio" hidden>
+            <section class="card">
+              <div class="card__head">
+                <div>
+                  <h2>Destaque principal</h2>
+                  <p>Primeira área vista pelo visitante, no topo do site.</p>
+                </div>
+              </div>
+              <div class="form-grid">
+                <div class="field field--full">
+                  <label for="heroEyebrow">Sobretítulo</label>
+                  <input type="text" id="heroEyebrow" data-bind="hero.eyebrow" />
+                </div>
+                <div class="field field--full">
+                  <label for="heroTitle">Título principal</label>
+                  <textarea id="heroTitle" rows="2" data-bind="hero.title"></textarea>
+                </div>
+                <div class="field field--full">
+                  <label for="heroHighlight">Trecho em destaque</label>
+                  <input type="text" id="heroHighlight" data-bind="hero.highlight" />
+                  <span class="hint">
+                    Precisa ser um trecho exatamente igual ao título. Ele recebe a cor de destaque
+                    e itálico.
+                  </span>
+                </div>
+                <div class="field field--full">
+                  <label for="heroSubtitle">Texto de apoio</label>
+                  <textarea id="heroSubtitle" rows="3" data-bind="hero.subtitle"></textarea>
+                </div>
+                <div class="field">
+                  <label for="heroCtaPrimary">Botão principal</label>
+                  <input type="text" id="heroCtaPrimary" data-bind="hero.ctaPrimary" />
+                </div>
+                <div class="field">
+                  <label for="heroCtaSecondary">Botão secundário</label>
+                  <input type="text" id="heroCtaSecondary" data-bind="hero.ctaSecondary" />
+                </div>
+              </div>
+            </section>
+
+            <section class="card">
+              <div class="card__head">
+                <div>
+                  <h2>Sobre o escritório</h2>
+                  <p>Texto institucional e compromissos exibidos na seção “O escritório”.</p>
+                </div>
+              </div>
+              <div class="form-grid">
+                <div class="field field--full">
+                  <label for="aboutEyebrow">Sobretítulo</label>
+                  <input type="text" id="aboutEyebrow" data-bind="about.eyebrow" />
+                </div>
+                <div class="field field--full">
+                  <label for="aboutTitle">Título</label>
+                  <input type="text" id="aboutTitle" data-bind="about.title" />
+                </div>
+                <div class="field field--full">
+                  <label for="aboutText1">Primeiro parágrafo</label>
+                  <textarea id="aboutText1" rows="3" data-bind="about.text1"></textarea>
+                </div>
+                <div class="field field--full">
+                  <label for="aboutText2">Segundo parágrafo</label>
+                  <textarea id="aboutText2" rows="3" data-bind="about.text2"></textarea>
+                </div>
+                <div class="field field--full">
+                  <label for="aboutQuote">Frase de destaque</label>
+                  <input type="text" id="aboutQuote" data-bind="about.quote" />
+                </div>
+                <div class="field field--full">
+                  <span class="field__label">Compromissos (lista com marcas de verificação)</span>
+                  <input
+                    type="text"
+                    data-bind="about.points.0"
+                    placeholder="Atendimento humanizado e personalizado"
+                    aria-label="Compromisso 1"
+                  />
+                  <input
+                    type="text"
+                    data-bind="about.points.1"
+                    placeholder="Comunicação clara em todas as etapas"
+                    aria-label="Compromisso 2"
+                  />
+                  <input
+                    type="text"
+                    data-bind="about.points.2"
+                    placeholder="Sigilo profissional e ética em primeiro lugar"
+                    aria-label="Compromisso 3"
+                  />
+                </div>
+              </div>
+            </section>
+
+            <section class="card">
+              <div class="card__head">
+                <div>
+                  <h2>Faixa de compromissos</h2>
+                  <p>Quatro destaques curtos exibidos logo abaixo do topo.</p>
+                </div>
+                <button class="btn btn--outline btn--sm" id="addPillar" type="button">
+                  <span data-icon="plus"></span> Adicionar
+                </button>
+              </div>
+              <div class="editor-list" id="pillarsEditor"></div>
+            </section>
+          </section>
+
+          <!-- Áreas -->
+          <section class="tab-panel" id="tab-areas" data-panel="areas" hidden>
+            <section class="card">
+              <div class="card__head">
+                <div>
+                  <h2>Áreas de atuação</h2>
+                  <p>
+                    Cada área vira um cartão no site e uma opção no formulário de agendamento.
+                  </p>
+                </div>
+                <button class="btn btn--outline btn--sm" id="addArea" type="button">
+                  <span data-icon="plus"></span> Nova área
+                </button>
+              </div>
+              <div class="editor-list" id="areasEditor"></div>
+            </section>
+          </section>
+
+          <!-- FAQ -->
+          <section class="tab-panel" id="tab-faq" data-panel="faq" hidden>
+            <section class="card">
+              <div class="card__head">
+                <div>
+                  <h2>Perguntas frequentes</h2>
+                  <p>Perguntas e respostas exibidas na seção de dúvidas do site.</p>
+                </div>
+                <button class="btn btn--outline btn--sm" id="addFaq" type="button">
+                  <span data-icon="plus"></span> Nova pergunta
+                </button>
+              </div>
+              <div class="editor-list" id="faqEditor"></div>
+            </section>
+          </section>
+
+          <!-- Horários -->
+          <section class="tab-panel" id="tab-horarios" data-panel="horarios" hidden>
+            <section class="card">
+              <div class="card__head">
+                <div>
+                  <h2>Funcionamento da agenda</h2>
+                  <p>Defina os dias, horários e a duração dos atendimentos.</p>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="bookingEnabled" data-bind="booking.enabled" />
+                  <span class="switch__track"></span>
+                  <span class="switch__label">Agendamento ativo</span>
+                </label>
+              </div>
+
+              <div class="field">
+                <span class="field__label">Dias de atendimento</span>
+                <div class="days-grid">
+                  <label class="day-check"><input type="checkbox" data-day="0" /><span>Dom</span></label>
+                  <label class="day-check"><input type="checkbox" data-day="1" /><span>Seg</span></label>
+                  <label class="day-check"><input type="checkbox" data-day="2" /><span>Ter</span></label>
+                  <label class="day-check"><input type="checkbox" data-day="3" /><span>Qua</span></label>
+                  <label class="day-check"><input type="checkbox" data-day="4" /><span>Qui</span></label>
+                  <label class="day-check"><input type="checkbox" data-day="5" /><span>Sex</span></label>
+                  <label class="day-check"><input type="checkbox" data-day="6" /><span>Sáb</span></label>
+                </div>
+              </div>
+
+              <div class="form-grid">
+                <div class="field">
+                  <label for="bookingStart">Início do atendimento</label>
+                  <input type="time" id="bookingStart" data-bind="booking.start" />
+                </div>
+                <div class="field">
+                  <label for="bookingEnd">Fim do atendimento</label>
+                  <input type="time" id="bookingEnd" data-bind="booking.end" />
+                </div>
+                <div class="field">
+                  <label for="bookingInterval">Duração de cada horário</label>
+                  <select id="bookingInterval" data-bind="booking.interval">
+                    <option value="30">30 minutos</option>
+                    <option value="45">45 minutos</option>
+                    <option value="60">60 minutos</option>
+                    <option value="90">90 minutos</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="bookingMaxAdvance">Antecedência máxima</label>
+                  <div class="input-suffix">
+                    <input
+                      type="number"
+                      id="bookingMaxAdvance"
+                      data-bind="booking.maxAdvanceDays"
+                      min="1"
+                      max="365"
+                    />
+                    <span>dias</span>
+                  </div>
+                </div>
+                <div class="field">
+                  <label for="bookingLunchStart">Início da pausa</label>
+                  <input type="time" id="bookingLunchStart" data-bind="booking.lunchStart" />
+                </div>
+                <div class="field">
+                  <label for="bookingLunchEnd">Fim da pausa</label>
+                  <input type="time" id="bookingLunchEnd" data-bind="booking.lunchEnd" />
+                </div>
+              </div>
+
+              <div class="summary-box" id="bookingSummary"></div>
+            </section>
+
+            <section class="card">
+              <div class="card__head">
+                <div>
+                  <h2>Textos do agendamento</h2>
+                  <p>Chamada e mensagem exibidas na seção de agendamento do site.</p>
+                </div>
+              </div>
+              <div class="form-grid">
+                <div class="field field--full">
+                  <label for="bookingEyebrow">Sobretítulo</label>
+                  <input type="text" id="bookingEyebrow" data-bind="booking.eyebrow" />
+                </div>
+                <div class="field field--full">
+                  <label for="bookingTitle">Título</label>
+                  <textarea id="bookingTitle" rows="2" data-bind="booking.title"></textarea>
+                </div>
+                <div class="field field--full">
+                  <label for="bookingSubtitle">Texto de apoio</label>
+                  <textarea id="bookingSubtitle" rows="3" data-bind="booking.subtitle"></textarea>
+                </div>
+                <div class="field field--full">
+                  <label for="bookingSuccessMessage">Mensagem após o agendamento</label>
+                  <textarea
+                    id="bookingSuccessMessage"
+                    rows="3"
+                    data-bind="booking.successMessage"
+                  ></textarea>
+                </div>
+              </div>
+            </section>
+          </section>
+
+          <!-- Configurações -->
+          <section class="tab-panel" id="tab-config" data-panel="config" hidden>
+            <div class="panel-grid">
+              <section class="card">
+                <h2>Senha do painel</h2>
+                <p class="card__lead">
+                  Altere a senha de acesso a este painel. Use pelo menos 6 caracteres.
+                </p>
+                <form id="passwordForm" novalidate>
+                  <div class="field">
+                    <label for="currentPassword">Senha atual</label>
+                    <input
+                      type="password"
+                      id="currentPassword"
+                      autocomplete="current-password"
+                    />
+                  </div>
+                  <div class="field">
+                    <label for="newPassword">Nova senha</label>
+                    <input type="password" id="newPassword" autocomplete="new-password" />
+                  </div>
+                  <div class="field">
+                    <label for="confirmPassword">Confirmar nova senha</label>
+                    <input type="password" id="confirmPassword" autocomplete="new-password" />
+                  </div>
+                  <p class="field-error" id="passwordError" hidden></p>
+                  <button class="btn btn--primary btn--sm" type="submit">Alterar senha</button>
+                </form>
+              </section>
+
+              <section class="card">
+                <h2>Backup e restauração</h2>
+                <p class="card__lead">
+                  Exporte o conteúdo, as configurações e os agendamentos em um arquivo JSON.
+                </p>
+                <div class="backup-actions">
+                  <button class="btn btn--outline btn--sm" id="exportBackup" type="button">
+                    <span data-icon="download"></span> Exportar backup
+                  </button>
+                  <label class="btn btn--ghost btn--sm" for="importBackup">
+                    <span data-icon="download"></span> Importar backup
+                  </label>
+                  <input type="file" id="importBackup" accept="application/json" hidden />
+                </div>
+                <p class="hint">
+                  O arquivo de backup não inclui a senha do painel. Guarde-o em local seguro.
+                </p>
+                <div class="info-box">
+                  <span data-icon="info"></span>
+                  <p>
+                    Os dados ficam salvos apenas neste navegador (localStorage). Para uso com
+                    vários dispositivos e agendamentos reais, é necessário um back-end com banco de
+                    dados.
+                  </p>
+                </div>
+              </section>
+            </div>
+
+            <section class="card card--danger">
+              <h2>Zona de risco</h2>
+              <div class="danger-row">
+                <div>
+                  <strong>Restaurar conteúdo padrão</strong>
+                  <p>Substitui todos os textos, cores e configurações pelos valores originais.</p>
+                </div>
+                <button class="btn btn--danger btn--sm" id="resetContent" type="button">
+                  Restaurar
+                </button>
+              </div>
+              <div class="danger-row">
+                <div>
+                  <strong>Apagar todos os agendamentos</strong>
+                  <p>Remove permanentemente todos os pedidos de agendamento salvos.</p>
+                </div>
+                <button class="btn btn--danger btn--sm" id="clearAppointments" type="button">
+                  Apagar
+                </button>
+              </div>
+            </section>
+
+            <section class="card">
+              <h2>Sobre este painel</h2>
+              <p class="card__lead">
+                Este painel foi construído em HTML, CSS e JavaScript, sem servidor. Ele é ideal para
+                demonstrar e editar o site localmente. A autenticação é feita no navegador e não
+                substitui uma proteção de servidor.
+              </p>
+              <p class="card__lead">
+                Para publicar com edição segura e agendamentos compartilhados entre dispositivos,
+                será necessário conectar um back-end (por exemplo, Node.js, Supabase ou Firebase) e
+                um banco de dados.
+              </p>
+            </section>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <dialog class="modal" id="apptDialog">
+      <div class="modal__head">
+        <h2>Detalhes do agendamento</h2>
+        <button class="icon-btn" id="closeDialog" type="button" aria-label="Fechar">
+          <span data-icon="x"></span>
+        </button>
+      </div>
+      <div class="modal__body" id="apptDetails"></div>
+      <div class="modal__actions" id="apptDialogActions"></div>
+    </dialog>
+
+    <div class="toast" id="adminToast" role="status" aria-live="polite"></div>
+
+    <script src="js/icons.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/admin.js"></script>
+  </body>
+</html>

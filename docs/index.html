@@ -1,0 +1,622 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Schesman Advocacia — Advocacia & Consultoria Jurídica</title>
+    <meta
+      name="description"
+      content="Atendimento jurídico personalizado para pessoas e empresas. Conheça as áreas de atuação do escritório e agende sua consulta presencial ou online."
+    />
+    <meta name="theme-color" content="#14263b" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Schesman Advocacia — Advocacia & Consultoria Jurídica" />
+    <meta
+      property="og:description"
+      content="Atendimento jurídico próximo, técnico e transparente. Agende sua consulta presencial ou online."
+    />
+    <meta property="og:locale" content="pt_BR" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2314263b'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='38' fill='%23b8935a' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <script>
+      /* Aplica as cores personalizadas antes da renderização para evitar "flash". */
+      document.documentElement.classList.add("js");
+      try {
+        var stored = JSON.parse(localStorage.getItem("schesman_site_v1") || "{}");
+        var theme = stored.theme || {};
+        var root = document.documentElement;
+        if (theme.primary) root.style.setProperty("--primary", theme.primary);
+        if (theme.accent) root.style.setProperty("--accent", theme.accent);
+        if (theme.background) root.style.setProperty("--bg", theme.background);
+      } catch (error) {}
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LegalService",
+        "name": "Schesman Advocacia",
+        "description": "Escritório de advocacia com atendimento personalizado para pessoas e empresas, presencial e online.",
+        "telephone": "+55 11 99999-9999",
+        "email": "contato@schesman.adv.br",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "São Paulo",
+          "addressRegion": "SP",
+          "addressCountry": "BR"
+        },
+        "areaServed": "Brasil",
+        "openingHours": "Mo-Fr 09:00-18:00"
+      }
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+    <div class="topbar">
+      <div class="container topbar__inner">
+        <div class="topbar__info">
+          <a id="topPhoneLink" href="tel:+5511999999999">
+            <span data-icon="phone"></span>
+            <span id="topPhone">(11) 99999-9999</span>
+          </a>
+          <a id="topEmailLink" href="mailto:contato@schesman.adv.br">
+            <span data-icon="mail"></span>
+            <span id="topEmail">contato@schesman.adv.br</span>
+          </a>
+          <span class="topbar__hours">
+            <span data-icon="clock"></span>
+            <span id="topHours">Segunda a sexta, das 9h às 18h</span>
+          </span>
+        </div>
+        <a
+          class="topbar__instagram"
+          id="topInstagram"
+          href="https://www.instagram.com/schesmanadvocacia"
+          target="_blank"
+          rel="noopener"
+        >
+          <span data-icon="instagram"></span>
+          <span>Instagram</span>
+        </a>
+      </div>
+    </div>
+
+    <header class="site-header" id="siteHeader">
+      <div class="container header__inner">
+        <a class="brand" href="#inicio" id="brandLink" aria-label="Ir para o início">
+          <span class="brand__mark" id="brandMark"><span id="brandMonogram">S</span></span>
+          <span class="brand__text">
+            <strong id="brandName">Schesman Advocacia</strong>
+            <small id="brandTagline">Advocacia &amp; Consultoria Jurídica</small>
+          </span>
+        </a>
+
+        <nav class="nav" id="mainNav" aria-label="Navegação principal">
+          <a href="#inicio" class="nav__link is-active">Início</a>
+          <a href="#escritorio" class="nav__link">O escritório</a>
+          <a href="#areas" class="nav__link">Áreas de atuação</a>
+          <a href="#processo" class="nav__link">Como funciona</a>
+          <a href="#duvidas" class="nav__link">Dúvidas</a>
+          <a href="#contato" class="nav__link">Contato</a>
+          <a href="#agendamento" class="btn btn--primary nav__cta">Agendar consulta</a>
+        </nav>
+
+        <button
+          class="nav-toggle"
+          id="navToggle"
+          type="button"
+          aria-label="Abrir menu"
+          aria-expanded="false"
+          aria-controls="mainNav"
+        >
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+    <main id="conteudo">
+      <section class="hero" id="inicio">
+        <div class="hero__bg" aria-hidden="true"></div>
+        <div class="container hero__inner">
+          <div class="hero__content">
+            <span class="eyebrow" id="heroEyebrow">Advocacia &amp; Consultoria</span>
+            <h1 class="hero__title" id="heroTitle">
+              Defendemos seus direitos com <em>estratégia, ética e dedicação.</em>
+            </h1>
+            <p class="hero__subtitle" id="heroSubtitle">
+              Atendimento jurídico personalizado para pessoas e empresas. Conte com uma equipe
+              próxima, técnica e comprometida com a defesa dos seus interesses.
+            </p>
+            <div class="hero__actions">
+              <a class="btn btn--primary btn--lg" href="#agendamento" id="heroCtaPrimary">
+                Agendar consulta <span data-icon="arrow-right"></span>
+              </a>
+              <a class="btn btn--outline btn--lg" href="#escritorio" id="heroCtaSecondary">
+                Conheça o escritório
+              </a>
+            </div>
+            <div class="hero__meta">
+              <span class="hero__meta-item">
+                <span data-icon="check-circle"></span> Atendimento presencial e online
+              </span>
+              <span class="hero__meta-item">
+                <span data-icon="shield"></span> Sigilo profissional
+              </span>
+            </div>
+          </div>
+
+          <div class="hero-art reveal" aria-hidden="true">
+            <span class="hero-art__halo"></span>
+            <span class="hero-art__watermark" data-icon="scale"></span>
+            <div class="hero-art__panel">
+              <span class="hero-art__kicker">Escritório de advocacia</span>
+              <span class="hero-art__monogram" id="heroMonogram">S</span>
+              <span class="hero-art__divider"></span>
+              <strong class="hero-art__name" id="heroArtName">Schesman Advocacia</strong>
+              <span class="hero-art__oab" id="heroOab">OAB/SP 000.000</span>
+            </div>
+            <div class="hero-art__card hero-art__card--top">
+              <span class="hero-art__icon" data-icon="scale"></span>
+              <span><strong>Atendimento</strong><small>personalizado</small></span>
+            </div>
+            <div class="hero-art__card hero-art__card--bottom">
+              <span class="hero-art__icon" data-icon="shield"></span>
+              <span><strong>Sigilo</strong><small>profissional</small></span>
+            </div>
+            <span class="hero-art__stamp">Ética · Dedicação</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="pillars" aria-label="Nossos compromissos">
+        <div class="container">
+          <div class="pillars__grid" id="pillarsGrid"></div>
+        </div>
+      </section>
+
+      <section class="section about" id="escritorio">
+        <div class="container about__grid">
+          <div class="about__intro reveal">
+            <span class="eyebrow" id="aboutEyebrow">O escritório</span>
+            <h2 id="aboutTitle">Tradição jurídica, visão contemporânea.</h2>
+            <blockquote class="about__quote" id="aboutQuote">
+              “Cada caso é único. Por isso, cada estratégia também deve ser.”
+            </blockquote>
+            <div class="about__seal">
+              <span data-icon="scale"></span>
+              <span>Compromisso com a ética e o sigilo profissional</span>
+            </div>
+          </div>
+          <div class="about__body reveal">
+            <p id="aboutText1">
+              O Schesman Advocacia nasceu com o propósito de oferecer um atendimento jurídico
+              próximo e transparente, unindo rigor técnico e sensibilidade para compreender cada
+              história.
+            </p>
+            <p id="aboutText2">
+              Atuamos de forma preventiva e contenciosa, sempre com comunicação clara sobre cada
+              etapa do processo. Nosso compromisso é construir soluções seguras, com ética e
+              dedicação.
+            </p>
+            <ul class="check-list" id="aboutPoints"></ul>
+            <a href="#agendamento" class="link-arrow">
+              Agende uma conversa <span data-icon="arrow-right"></span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--alt areas" id="areas">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">Áreas de atuação</span>
+              <h2>Como podemos ajudar você</h2>
+            </div>
+            <p class="section-head__lead">
+              Atuação jurídica em diferentes frentes, sempre com análise individual de cada caso e
+              orientação clara sobre os próximos passos.
+            </p>
+          </div>
+          <div class="areas__grid" id="areasGrid"></div>
+          <p class="areas__note">
+            Não encontrou a sua área? <a href="#agendamento">Fale com a nossa equipe.</a>
+          </p>
+        </div>
+      </section>
+
+      <section class="process" id="processo">
+        <div class="container">
+          <div class="section-head section-head--light">
+            <div>
+              <span class="eyebrow eyebrow--light">Como funciona</span>
+              <h2>Um atendimento simples, do primeiro contato ao acompanhamento.</h2>
+            </div>
+            <p class="section-head__lead">
+              Você não precisa entender de jurídico para dar o primeiro passo. Nós explicamos cada
+              etapa com clareza.
+            </p>
+          </div>
+          <div class="process__grid">
+            <article class="process__step reveal">
+              <span class="process__num">01</span>
+              <span class="process__icon" data-icon="calendar"></span>
+              <h3>Escolha o horário</h3>
+              <p>
+                Selecione a data e o horário que funcionam melhor para você, com atendimento
+                presencial ou online.
+              </p>
+            </article>
+            <article class="process__step reveal">
+              <span class="process__num">02</span>
+              <span class="process__icon" data-icon="users"></span>
+              <h3>Converse com o advogado</h3>
+              <p>
+                Ouvimos a sua história, analisamos os documentos e esclarecemos as possibilidades
+                jurídicas do caso.
+              </p>
+            </article>
+            <article class="process__step reveal">
+              <span class="process__num">03</span>
+              <span class="process__icon" data-icon="shield"></span>
+              <h3>Receba a orientação</h3>
+              <p>
+                Você recebe uma orientação clara sobre os caminhos possíveis, prazos e próximos
+                passos.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section booking" id="agendamento">
+        <div class="container booking__grid">
+          <div class="booking__intro reveal">
+            <span class="eyebrow" id="bookingEyebrow">Agendamento</span>
+            <h2 id="bookingTitle">Escolha o melhor dia e horário para conversar.</h2>
+            <p id="bookingSubtitle">
+              Agende uma consulta presencial ou online. Preencha os dados ao lado e aguarde a
+              confirmação da nossa equipe.
+            </p>
+            <ul class="booking__steps">
+              <li>
+                <span>1</span>
+                <div><strong>Escolha a data</strong><small>Veja os horários disponíveis.</small></div>
+              </li>
+              <li>
+                <span>2</span>
+                <div><strong>Informe seus dados</strong><small>Leva menos de dois minutos.</small></div>
+              </li>
+              <li>
+                <span>3</span>
+                <div><strong>Aguarde a confirmação</strong><small>Entraremos em contato.</small></div>
+              </li>
+            </ul>
+            <div class="booking__contact">
+              <span>Prefere falar agora?</span>
+              <a id="bookingWhatsapp" href="#" target="_blank" rel="noopener">
+                <span data-icon="whatsapp"></span> WhatsApp
+              </a>
+              <a id="bookingPhoneLink" href="tel:+5511999999999">
+                <span data-icon="phone"></span> <span id="bookingPhone">(11) 99999-9999</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="booking__card reveal">
+            <div id="bookingFormWrap">
+              <form id="bookingForm" novalidate>
+                <div class="form-grid">
+                  <div class="field field--full">
+                    <label for="bookingName">Nome completo</label>
+                    <input
+                      id="bookingName"
+                      name="name"
+                      type="text"
+                      autocomplete="name"
+                      placeholder="Seu nome completo"
+                    />
+                    <p class="field-error" data-error-for="bookingName" hidden></p>
+                  </div>
+                  <div class="field">
+                    <label for="bookingEmail">E-mail</label>
+                    <input
+                      id="bookingEmail"
+                      name="email"
+                      type="email"
+                      autocomplete="email"
+                      placeholder="voce@email.com"
+                    />
+                    <p class="field-error" data-error-for="bookingEmail" hidden></p>
+                  </div>
+                  <div class="field">
+                    <label for="bookingPhoneInput">Telefone / WhatsApp</label>
+                    <input
+                      id="bookingPhoneInput"
+                      name="phone"
+                      type="tel"
+                      inputmode="tel"
+                      autocomplete="tel"
+                      placeholder="(11) 99999-9999"
+                    />
+                    <p class="field-error" data-error-for="bookingPhoneInput" hidden></p>
+                  </div>
+                  <div class="field">
+                    <label for="bookingArea">Área de interesse</label>
+                    <select id="bookingArea" name="area"></select>
+                    <p class="field-error" data-error-for="bookingArea" hidden></p>
+                  </div>
+                  <div class="field">
+                    <label for="bookingDate">Data</label>
+                    <input id="bookingDate" name="date" type="date" />
+                    <p class="field-error" data-error-for="bookingDate" hidden></p>
+                  </div>
+                </div>
+
+                <div class="field">
+                  <span class="field__label">Formato do atendimento</span>
+                  <div class="segmented">
+                    <label>
+                      <input type="radio" name="mode" value="Presencial" checked />
+                      <span><span data-icon="building"></span> Presencial</span>
+                    </label>
+                    <label>
+                      <input type="radio" name="mode" value="Online" />
+                      <span><span data-icon="users"></span> Online</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="field">
+                  <span class="field__label">Horário</span>
+                  <div
+                    class="slots"
+                    id="bookingSlots"
+                    role="group"
+                    aria-label="Horários disponíveis"
+                  >
+                    <p class="slots__hint">Selecione uma data para ver os horários.</p>
+                  </div>
+                  <p class="field-error" data-error-for="bookingSlots" hidden></p>
+                  <input type="hidden" id="bookingSlot" name="time" />
+                </div>
+
+                <div class="field">
+                  <label for="bookingNotes">Mensagem (opcional)</label>
+                  <textarea
+                    id="bookingNotes"
+                    name="notes"
+                    rows="3"
+                    placeholder="Conte brevemente o assunto que deseja tratar."
+                  ></textarea>
+                </div>
+
+                <label class="checkbox">
+                  <input type="checkbox" id="bookingConsent" />
+                  <span>
+                    Autorizo o contato do escritório sobre este agendamento. Meus dados não serão
+                    compartilhados.
+                  </span>
+                </label>
+                <p class="field-error" data-error-for="bookingConsent" hidden></p>
+
+                <button class="btn btn--primary btn--block btn--lg" type="submit">
+                  Solicitar agendamento <span data-icon="arrow-right"></span>
+                </button>
+                <p class="form-note">
+                  <span data-icon="lock"></span> Seus dados são utilizados apenas para o contato
+                  sobre o agendamento.
+                </p>
+              </form>
+            </div>
+
+            <div class="booking-success" id="bookingSuccess" hidden aria-live="polite">
+              <span class="booking-success__icon" data-icon="check-circle"></span>
+              <span class="eyebrow">Solicitação enviada</span>
+              <h3>Agendamento recebido!</h3>
+              <p id="successMessage">
+                Recebemos o seu pedido de agendamento. Nossa equipe entrará em contato para
+                confirmar o horário.
+              </p>
+              <div class="booking-success__summary">
+                <div><span>Protocolo</span><strong id="successProtocol">—</strong></div>
+                <div><span>Data</span><strong id="successDate">—</strong></div>
+                <div><span>Horário</span><strong id="successTime">—</strong></div>
+                <div><span>Formato</span><strong id="successMode">—</strong></div>
+              </div>
+              <div class="booking-success__actions">
+                <button type="button" class="btn btn--primary" id="newBookingBtn">
+                  Novo agendamento
+                </button>
+                <button type="button" class="btn btn--outline" id="icsBtn">
+                  Adicionar à agenda
+                </button>
+              </div>
+              <a
+                class="link-arrow booking-success__whatsapp"
+                id="successWhatsapp"
+                href="#"
+                target="_blank"
+                rel="noopener"
+              >
+                Enviar mensagem no WhatsApp <span data-icon="whatsapp"></span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--alt faq" id="duvidas">
+        <div class="container faq__grid">
+          <div class="faq__intro reveal">
+            <span class="eyebrow">Dúvidas frequentes</span>
+            <h2>Informação clara, desde o primeiro contato.</h2>
+            <p>
+              Reunimos as perguntas mais comuns de quem procura um advogado pela primeira vez. Se
+              ainda ficar alguma dúvida, fale com a nossa equipe.
+            </p>
+            <a class="link-arrow" href="#contato">
+              Fale conosco <span data-icon="arrow-right"></span>
+            </a>
+          </div>
+          <div class="faq__list" id="faqList"></div>
+        </div>
+      </section>
+
+      <section class="contact" id="contato">
+        <div class="container contact__grid">
+          <div class="contact__info reveal">
+            <span class="eyebrow eyebrow--light">Contato</span>
+            <h2>Vamos conversar sobre o seu caso.</h2>
+            <p>
+              Estamos à disposição para ouvir você e indicar o melhor caminho. Entre em contato pelo
+              canal que preferir.
+            </p>
+            <div class="contact__list">
+              <a class="contact__item" id="contactPhoneLink" href="tel:+5511999999999">
+                <span class="contact__icon" data-icon="phone"></span>
+                <span><small>Telefone</small><strong id="contactPhone">(11) 99999-9999</strong></span>
+              </a>
+              <a class="contact__item" id="contactEmailLink" href="mailto:contato@schesman.adv.br">
+                <span class="contact__icon" data-icon="mail"></span>
+                <span
+                  ><small>E-mail</small><strong id="contactEmail"
+                    >contato@schesman.adv.br</strong
+                  ></span
+                >
+              </a>
+              <span class="contact__item">
+                <span class="contact__icon" data-icon="map-pin"></span>
+                <span><small>Endereço</small><strong id="contactAddress">São Paulo — SP</strong></span>
+              </span>
+              <span class="contact__item">
+                <span class="contact__icon" data-icon="clock"></span>
+                <span
+                  ><small>Horário</small><strong id="contactHours"
+                    >Segunda a sexta, das 9h às 18h</strong
+                  ></span
+                >
+              </span>
+            </div>
+            <div class="contact__social">
+              <a id="contactWhatsapp" href="#" target="_blank" rel="noopener">
+                <span data-icon="whatsapp"></span> WhatsApp
+              </a>
+              <a id="contactInstagram" href="#" target="_blank" rel="noopener">
+                <span data-icon="instagram"></span> Instagram
+              </a>
+            </div>
+          </div>
+
+          <aside class="instagram-card reveal">
+            <span class="instagram-card__icon" data-icon="instagram"></span>
+            <span class="eyebrow eyebrow--light">Redes sociais</span>
+            <h3>Acompanhe o escritório no Instagram</h3>
+            <p>
+              Conteúdos sobre direitos, informações úteis e um pouco do dia a dia do escritório.
+            </p>
+            <a
+              class="btn btn--gold"
+              id="instagramCardLink"
+              href="https://www.instagram.com/schesmanadvocacia"
+              target="_blank"
+              rel="noopener"
+            >
+              Abrir Instagram <span data-icon="external-link"></span>
+            </a>
+            <span class="instagram-card__handle" id="instagramHandle">@schesmanadvocacia</span>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__grid">
+        <div class="footer__brand">
+          <div class="brand brand--footer">
+            <span class="brand__mark brand__mark--footer" id="footerMark">
+              <span id="footerMonogram">S</span>
+            </span>
+            <span class="brand__text">
+              <strong id="footerName">Schesman Advocacia</strong>
+              <small id="footerTagline">Advocacia &amp; Consultoria Jurídica</small>
+            </span>
+          </div>
+          <p>
+            Atendimento jurídico próximo, técnico e transparente para pessoas e empresas.
+          </p>
+          <span class="footer__oab" id="footerOab">OAB/SP 000.000</span>
+        </div>
+
+        <div class="footer__col">
+          <h3>Navegação</h3>
+          <a href="#inicio">Início</a>
+          <a href="#escritorio">O escritório</a>
+          <a href="#areas">Áreas de atuação</a>
+          <a href="#processo">Como funciona</a>
+          <a href="#duvidas">Dúvidas frequentes</a>
+        </div>
+
+        <div class="footer__col">
+          <h3>Atendimento</h3>
+          <a href="#agendamento">Agendar consulta</a>
+          <a id="footerWhatsapp" href="#" target="_blank" rel="noopener">WhatsApp</a>
+          <a id="footerInstagram" href="#" target="_blank" rel="noopener">Instagram</a>
+          <a id="footerEmailLink" href="mailto:contato@schesman.adv.br">Enviar e-mail</a>
+        </div>
+
+        <div class="footer__col footer__col--contact">
+          <h3>Contato</h3>
+          <a id="footerPhoneLink" href="tel:+5511999999999">
+            <span data-icon="phone"></span> <span id="footerPhone">(11) 99999-9999</span>
+          </a>
+          <span><span data-icon="map-pin"></span> <span id="footerAddress">São Paulo — SP</span></span>
+          <span><span data-icon="clock"></span> <span id="footerHours">Seg. a sex., das 9h às 18h</span></span>
+        </div>
+      </div>
+
+      <div class="container footer__bottom">
+        <p>
+          © <span id="footerYear">2026</span>
+          <span id="footerLegalName">Schesman Advocacia</span>. Todos os direitos reservados.
+        </p>
+        <p class="footer__legal">
+          Este site tem caráter informativo, em conformidade com o Código de Ética da OAB.
+        </p>
+      </div>
+    </footer>
+
+    <a
+      class="whatsapp-float"
+      id="whatsappFloat"
+      href="#"
+      target="_blank"
+      rel="noopener"
+      aria-label="Falar no WhatsApp"
+    >
+      <span data-icon="whatsapp"></span>
+    </a>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <noscript>
+      <div class="noscript">
+        Ative o JavaScript no seu navegador para visualizar o site completo e utilizar o
+        agendamento online.
+      </div>
+    </noscript>
+
+    <script src="js/icons.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
