@@ -8,6 +8,18 @@ O projeto foi feito apenas com **HTML, CSS e JavaScript**, sem back-end e sem ba
 
 ---
 
+## Site online
+
+- **Site publicado:** https://gabsdelo.github.io/schesman-advocacia/
+- **Repositório:** https://github.com/GabsDelo/schesman-advocacia
+- **Origem da publicação:** branch `main`, pasta `docs/`
+
+A pasta `docs/` contém apenas a versão pública do site. O painel administrativo (`admin.html`) **não é publicado**, para não expor a área restrita. O painel continua disponível localmente pelo `iniciar-site.bat`.
+
+> A versão online é estática: o agendamento é salvo no navegador do visitante e não chega ao escritório. Para receber agendamentos de verdade, é necessário um back-end.
+
+---
+
 ## 1. Como abrir o site
 
 ### Opção recomendada — Windows
@@ -47,7 +59,7 @@ Ao abrir diretamente como arquivo (`file://`), alguns navegadores bloqueiam ou i
 2. Digite a senha padrão: **`admin123`**.
 3. Altere a senha em **Configurações → Senha do painel**.
 
-O link **“Área do administrador”** também aparece no rodapé do site.
+O link **“Área do administrador”** aparece no rodapé do site local. Na versão publicada no GitHub Pages, ele é removido de propósito.
 
 > A senha é verificada no próprio navegador. Ela serve para evitar acesso casual, mas **não é uma proteção de servidor**. Para uso profissional com dados reais, é necessário um back-end com autenticação.
 
@@ -151,10 +163,16 @@ Recomenda-se exportar um backup antes de:
 
 ```text
 site juridico/
-├── index.html          # Página pública
-├── admin.html          # Painel administrativo
+├── index.html          # Página pública (versão local)
+├── admin.html          # Painel administrativo (não publicado)
 ├── iniciar-site.bat    # Atalho para servidor local no Windows
 ├── README.md
+├── .gitignore
+├── docs/               # Versão publicada no GitHub Pages
+│   ├── index.html
+│   ├── .nojekyll
+│   ├── css/style.css
+│   └── js/             # icons.js, data.js e main.js
 ├── css/
 │   ├── style.css       # Estilos do site
 │   └── admin.css       # Estilos do painel
@@ -175,14 +193,31 @@ Chaves usadas no navegador:
 
 ## 7. Publicação
 
-O site é estático e pode ser publicado em serviços como Netlify, Vercel, GitHub Pages ou em uma hospedagem comum.
+O site está publicado no **GitHub Pages**:
+
+- **URL:** https://gabsdelo.github.io/schesman-advocacia/
+- **Repositório:** https://github.com/GabsDelo/schesman-advocacia
+- **Configuração:** branch `main`, pasta `/docs`
+
+Para atualizar o site publicado:
+
+1. edite os arquivos da pasta `docs/` (ou copie a versão atualizada de `index.html`, `css/` e `js/`);
+2. execute:
+
+```bash
+git add .
+git commit -m "Atualiza o site"
+git push
+```
+
+O GitHub Pages reconstrói a página automaticamente em alguns minutos.
 
 Pontos de atenção:
 
-1. **O painel não deve ser publicado como está para uso real**, porque a senha fica no JavaScript do navegador. Use-o apenas localmente ou proteja o acesso por um back-end.
-2. **Os dados não são compartilhados entre dispositivos** enquanto não houver banco de dados.
-3. Para publicar, envie todos os arquivos da pasta, mantendo a estrutura de `css/` e `js/`.
-4. Depois de publicar, confirme se o endereço usa HTTPS.
+1. **O painel não é publicado** e não deve ser exposto como está, porque a senha fica no JavaScript do navegador. Use-o apenas localmente ou proteja o acesso por um back-end.
+2. **Os dados não são compartilhados entre dispositivos** enquanto não houver banco de dados. O agendamento feito no site online fica apenas no navegador do visitante.
+3. A versão publicada em `docs/` contém somente o site público, com os links de administrador removidos.
+4. Para publicar em outro serviço (Netlify, Vercel etc.), envie a pasta `docs/` ou a raiz do projeto, mantendo a estrutura de `css/` e `js/`.
 
 Se o objetivo for um site profissional com agendamentos reais, o próximo passo é criar uma API com banco de dados e autenticação. A interface atual já serve como base visual e funcional.
 
