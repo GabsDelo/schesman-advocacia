@@ -10,9 +10,11 @@ O projeto foi feito apenas com **HTML, CSS e JavaScript**, sem back-end e sem ba
 
 ## Site online
 
-- **Site publicado:** https://gabsdelo.github.io/schesman-advocacia/
+> **Publicação desativada em 19/11/2026.** O site foi retirado do ar enquanto o retorno do cliente é aguardado. O código, os arquivos e o histórico continuam no repositório. Para reativar, veja a seção 7.
+
+- **Último endereço:** https://gabsdelo.github.io/schesman-advocacia/ (fora do ar)
 - **Repositório:** https://github.com/GabsDelo/schesman-advocacia
-- **Origem da publicação:** branch `main`, pasta `docs/`
+- **Origem da publicação:** branch `main`, pasta `docs/` (quando ativada)
 
 A pasta `docs/` contém apenas a versão pública do site. O painel administrativo (`admin.html`) **não é publicado**, para não expor a área restrita. O painel continua disponível localmente pelo `iniciar-site.bat`.
 
@@ -224,6 +226,16 @@ git push
 O GitHub Pages reconstrói a página automaticamente em alguns minutos.
 
 Também é possível copiar os arquivos manualmente para `docs/`, desde que o link de administrador seja removido de `docs/index.html`.
+
+### Como reativar o GitHub Pages
+
+1. Abra o repositório no GitHub e vá em **Settings → Pages**.
+2. Em **Build and deployment**, escolha **Deploy from a branch**.
+3. Selecione a branch `main` e a pasta `/docs`.
+4. Clique em **Save**.
+5. Aguarde de 1 a 3 minutos e acesse o endereço.
+
+Antes de reativar, execute `publicar.ps1` para garantir que `docs/` está sincronizada com a versão atual.
 
 Pontos de atenção:
 
